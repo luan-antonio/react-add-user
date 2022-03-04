@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
 
+import Wrapper from "../Helpers/Wrapper";
+
 const AddUser = ({ onAddUser }) => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
@@ -47,11 +49,18 @@ const AddUser = ({ onAddUser }) => {
 
   const errorHandler = () => {
     setError(null);
+    console.log('aaaaa');
   };
 
   return (
-    <div>
-      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
+    <Wrapper>
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
       <form onSubmit={addUserHandler}>
         <label htmlFor="username">Username</label>
         <input
@@ -70,7 +79,7 @@ const AddUser = ({ onAddUser }) => {
         ></input>
         <Button type="submit">Add User</Button>
       </form>
-    </div>
+    </Wrapper>
   );
 };
 

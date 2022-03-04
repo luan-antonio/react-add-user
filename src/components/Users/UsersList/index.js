@@ -1,22 +1,8 @@
-import styled from "styled-components";
-
-const UsersStyle = styled.ul`
-  margin: 2rem auto;
-  width: 90%;
-  max-width: 40rem;
-  list-style: none;
-  padding: 1rem;
-
-  & li {
-    border: 1px solid #ccc;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-  }
-`;
+import * as S from "./styles"
 
 const UsersList = ({ users }) => {
   return (
-    <UsersStyle>
+    <S.Users>
       {users.length > 0 ? (
         users.map((user) => (
           <li key={user.id}>
@@ -26,7 +12,7 @@ const UsersList = ({ users }) => {
       ) : (
         <p> No users yet. Add one </p>
       )}
-    </UsersStyle>
+    </S.Users>
   );
 };
 
