@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 
 import Card from "./components/UI/Card";
 
@@ -18,14 +18,14 @@ function App() {
   };
 
   return (
-    <div>
+    <Fragment>
       <Card>
         <AddUser onAddUser={addUserHandler} />
       </Card>
       <Card>
         <UsersList users={users} />
       </Card>
-    </div>
+    </Fragment>
   );
 }
 
