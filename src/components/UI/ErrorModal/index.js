@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import ReactDOM from "react-dom";
 
 import Card from "../Card";
 import Backdrop from "../Backdrop";
@@ -6,7 +7,10 @@ import Button from "../Button";
 
 import * as S from "./styles";
 
-const ErrorModal = ({ title, message, onConfirm }) => {
+console.log(document.getElementById("overlay-root"));
+
+const Modal = ({ onConfirm, title, message }) => {
+  console.log(title, message);
   return (
     <Backdrop onClickHandler={onConfirm}>
       <Card padding="0">
@@ -23,6 +27,17 @@ const ErrorModal = ({ title, message, onConfirm }) => {
         </S.ErrorModal>
       </Card>
     </Backdrop>
+  );
+};
+
+const ErrorModal = ({ title, message, onConfirm }) => {
+  return (
+    <Fragment>
+      {ReactDOM.createPortal(
+        <Modal title={title} message={message} onConfirm={onConfirm} />,
+        document.getElementById("overlay-root")
+      )}
+    </Fragment>
   );
 };
 
